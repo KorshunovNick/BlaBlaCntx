@@ -13,13 +13,13 @@ function App() {
       <PostProvider>
         <Posts />
       </PostProvider>
-      <UserProvider>
+      {/* <UserProvider>
         <SearchUser />
         <UserItem />
       </UserProvider>
       <PhotoProviders>
         <Photos />
-      </PhotoProviders>
+      </PhotoProviders> */}
     </>
   );
 }

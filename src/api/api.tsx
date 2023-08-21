@@ -3,7 +3,7 @@ import { IUser } from "../types";
 
 const api = axios.create({ baseURL: "https://jsonplaceholder.typicode.com" });
 api.interceptors.request.use(
-  (config) => new Promise((resolve) => setTimeout(() => resolve(config), 1500))
+  (config) => new Promise((resolve) => setTimeout(() => resolve(config), 2800))
 );
 
 export const getUsers = async () =>

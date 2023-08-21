@@ -1,31 +1,28 @@
-import { useState } from "react";
 import usePosts from "../../hooks/usePosts";
-import { Spinner } from "@chakra-ui/react";
+
 import Post from "./Post";
 import "./Posts.css";
-const containerHeight = 600;
-const heightPost = 50;
+import IsLoadingPosts from "./IsLoadingPosts";
+import {
+  containerHeight,
+  heightPost,
+  usePagination,
+} from "../../hooks/usePagination";
 
 const Posts = () => {
   const { posts, isLoading } = usePosts();
-  if (isLoading) return <Spinner height={"100px"} width={"100px"}></Spinner>;
-  const [range, setRange] = useState(0);
-  const defaultCountElements = Math.floor(containerHeight / heightPost);
-  const pagination = [
-    ...Array(
-      Math.ceil(posts?.length / Math.floor(containerHeight / heightPost))
-    ).keys(),
-  ].map((e) => e + 1);
+  if (isLoading) return <IsLoadingPosts />;
 
-  const postsToRender = posts.slice(
-    defaultCountElements * range,
-    defaultCountElements * (range + 1)
-  );
-
-  console.log(pagination);
+  const { range, setRange, pagination, postsToRender } = usePagination(posts);
 
   return (
-    <div style={{background:'linear-gradient(45deg,rgba(0, 128, 0, 0.775),lightgreen)',padding: '20px',borderRadius:'8px'}}>
+    <div
+      style={{
+        background: "linear-gradient(45deg,rgba(0, 128, 0, 0.775),lightgreen)",
+        padding: "20px",
+        borderRadius: "8px",
+      }}
+    >
       <div
         className="pagination"
         style={{
@@ -38,7 +35,7 @@ const Posts = () => {
         {pagination.map((item, index) => (
           <div
             className={
-             range===index  ? "pagination-btn-change" : "pagination-btn"
+              range === index ? "pagination-btn-change" : "pagination-btn"
             }
             style={{
               border: "1px solid black",
