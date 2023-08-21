@@ -1,5 +1,5 @@
 import usePosts from "../../hooks/usePosts";
-
+import { useEffect } from "react";
 import Post from "./Post";
 import "./Posts.css";
 import IsLoadingPosts from "./IsLoadingPosts";
@@ -15,6 +15,21 @@ const Posts = () => {
 
   const { range, setRange, pagination, postsToRender } = usePagination(posts);
 
+  useEffect(() => {
+    const changeKeyRange = (event) => {
+      console.log(range);
+      if (event.key === "ArrowRight") {
+        setRange(Math.min(range + 1, pagination.length - 1));
+      }
+      if (event.key === "ArrowLeft") {
+        setRange(Math.max(range - 1, 0));
+      }
+    };
+    document.addEventListener("keydown", changeKeyRange);
+    return () => document.removeEventListener("keydown", changeKeyRange);
+  }, [range]);
+
+  
   return (
     <div
       style={{

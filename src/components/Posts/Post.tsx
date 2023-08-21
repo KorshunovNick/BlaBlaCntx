@@ -6,6 +6,7 @@ interface PostProps extends IPost {
 }
 
 const Post: FC<PostProps> = ({ heightPost, id, title }) => {
+  
   return (
     <div
       style={{
