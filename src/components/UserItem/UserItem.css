@@ -1,0 +1,30 @@
+.user-wrapper {
+    margin: 20px 50px;
+    border: 2px solid black;
+    padding: 10px 30px;
+    position: relative;
+    background-color: rgb(126, 222, 102);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50vw;
+}
+h2 {
+    text-decoration: underline;
+}
+
+.info-wrapper {
+    text-align: left;
+}
+
+.deleteButton {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background-color: pink;
+    transition: all 0.5s linear;
+}
+.deleteButton:hover{
+    background-color: red;
+    color: white
+}

@@ -1,0 +1,14 @@
+.pagination-btn:hover {
+  background-color: #099109;
+  color: cyan;
+}
+.pagination-btn-change {
+  background-color: darkgreen;
+  color: white;
+}
+.number {
+    border: 1px solid black;
+    border-radius: 8px;
+    height: 25px;
+    margin-right: 10px;
+}
